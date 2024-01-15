@@ -2,7 +2,7 @@
     declare(strict_type=1);
     namespace Form;
 
-    class Question implements QuestionRenderInterface{
+    class GenericQuestionElement implements QuestionRenderInterface{
         private int $id;
         private Array $listeAnswer;
         private Array $listeCorrect;

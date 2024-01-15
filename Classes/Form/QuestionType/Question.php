@@ -2,9 +2,9 @@
 declare(strict_types=1);
 namespace Form\QuestionType;
 
-use Form\GenericFormElement;
+use Form\GenericQuestionElement;
 
-abstract class Question extends GenericFormElement
+abstract class Question extends GenericQuestionElement
 {
     public function render(): string
     {
