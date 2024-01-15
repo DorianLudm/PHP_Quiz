@@ -3,7 +3,8 @@
         public static function createQuestions(Array $data): Array{
             $listeQuestion = [];
             foreach($data as $question){
-                array_push($listeQuestion, new Question(intval($question["label"]), $question["choices"], $question["correct"], $question["label"], $question["type"]));
+                $className = "Form\\Type\\".ucfirst($question["type"]);
+                array_push($listeQuestion, new $className(intval($question["label"]), $question["choices"], $question["correct"], $question["label"], $question["type"]));
             }
             return $listeQuestion;
         }

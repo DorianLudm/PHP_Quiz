@@ -1,7 +1,51 @@
-<?php 
-declare(strict_types=1);
-namespace Action;
-$file = file_get_contents('./Data/question.json');
+<?php
+    declare(strict_type=1);
+    namespace Form;
 
-$questions = json_decode($file,true);
+    class Question implements QuestionRenderInterface{
+        private int $id;
+        private Array $listeAnswer;
+        private Array $listeCorrect;
+        private String $question;
+        private String $type;
+
+        public function __construct(int $id, Array $listeAnswer, String $realAnswer, String $question, String $type){
+            $this->id = $id;
+            $this->listeAnswer = $listeAnswer;
+            $this->realAnswer = $realAnswer;
+            $this->question = $question;
+            $this->type = $type;
+        }
+
+        public function getId(): int{
+            return $this->id;
+        }
+
+        public function getListeAnswer(): Array{
+            return $this->listeAnswer;
+        }
+
+        public function getRealAnswer(): String{
+            return $this->realAnswer;
+        }
+
+        public function getQuestion(): String{
+            return $this->question;
+        }
+
+        public function getType(): String{
+            return $this->type;
+        }
+
+        public function render(): String{
+            $html = $this->question . "<br>";
+            $i = 0;
+            foreach ($this->listeAnswer as $c) {
+                $i += 1;
+                $html .= "<input type='radio' name='$this->name' value='$c[value]' id='$this->name-$i'>";
+                $html .= "<label for='$this->name-$i'>$c[text]</label>";
+            }
+            echo $html;
+        }
+    }
 ?>

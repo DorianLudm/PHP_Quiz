@@ -1,25 +1,17 @@
 <?php
 declare(strict_types=1);
 
-spl_autoload_register(static function(string $fqcn) {
-    // $fqcn contient Model\Thread\Message par exemple
-    // remplaçons les \ par des / et ajoutons .php à la fin.
-    // on obtient Model/Thread/Message.php
+// Autoload
+require 'Classes/Autoloader.php';
+Autoloader::register();
 
-    $path = str_replace('\\', '/', $fqcn).'.php';
- 
-    // puis chargeons le fichier
-    require_once('./classes/'.$path);
- });
+// Use
+use Data\Dataloader;
 
-use Form\InputType\Checkbox;
-use Form\InputType\Radio;
-use Form\InputType\Hidden; 
-use Form\InputType\Text;
-use Form\InputType\Textarea;
-use Action\Quiz;
-require_once('./classes/Action/Question.php');
-require_once('./classes/Action/Score.php');
+// Init
+$data = new Dataloader("Classes/Data/questions.json");
+$factory = new Factory();
+$questions = $factory->createQuestions($data->load());
 ?>
 
 <!doctype html>
