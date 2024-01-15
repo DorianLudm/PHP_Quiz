@@ -8,6 +8,7 @@
         }
 
         public function load(): Array{
+            echo $this->chemin;
             $json = file_get_contents($this->chemin);
             $data = json_decode($json, true);
             return $data;
