@@ -6,14 +6,14 @@
         private int $id;
         private Array $listeAnswer;
         private Array $realAnswer;
-        private String $question;
+        private String $label;
         private String $type;
 
-        public function __construct(int $id, Array $listeAnswer, Array $realAnswer, String $question, String $type){
+        public function __construct(int $id, Array $listeAnswer, Array $realAnswer, String $label, String $type){
             $this->id = $id;
             $this->listeAnswer = $listeAnswer;
             $this->realAnswer = $realAnswer;
-            $this->question = $question;
+            $this->label = $label;
             $this->type = $type;
         }
 
@@ -29,8 +29,8 @@
             return $this->realAnswer;
         }
 
-        public function getQuestion(): String{
-            return $this->question;
+        public function getLabel(): String{
+            return $this->label;
         }
 
         public function getType(): String{
@@ -38,7 +38,7 @@
         }
 
         public function render(): String{
-            $html = $this->question . "<br>";
+            $html = $this->label . "<br>";
             $i = 0;
             foreach ($this->listeAnswer as $c) {
                 $i += 1;

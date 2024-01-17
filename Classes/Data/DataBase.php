@@ -3,7 +3,7 @@
     class DataBase{
         private $file_db;
         public function __construct(){
-            $this->file_db=new \PDO('sqlite:Question');
+            $this->file_db=new \PDO('sqlite:Question.sqlite');
             $this->file_db->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_WARNING);
         }
         public function createTable(){
