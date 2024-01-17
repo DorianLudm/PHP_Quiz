@@ -5,11 +5,11 @@
     class GenericQuestionElement implements QuestionRenderInterface{
         private int $id;
         private Array $listeAnswer;
-        private Array $listeCorrect;
+        private Array $realAnswer;
         private String $question;
         private String $type;
 
-        public function __construct(int $id, Array $listeAnswer, String $realAnswer, String $question, String $type){
+        public function __construct(int $id, Array $listeAnswer, Array $realAnswer, String $question, String $type){
             $this->id = $id;
             $this->listeAnswer = $listeAnswer;
             $this->realAnswer = $realAnswer;

@@ -7,11 +7,13 @@ Autoloader::register();
 
 // Use
 use Data\Dataloader;
+use Data\DataBase;
 
 // Init
-$data = new Dataloader("Classes/Data/questions.json");
-$factory = new Factory();
-$questions = $factory->createQuestions($data->load());
+// $data = new Dataloader("Classes/Data/questions.json");
+$data = new DataBase();
+$q = $data->load();
+$questions = Factory::createQuestions($q);
 ?>
 
 <!doctype html>
@@ -73,7 +75,10 @@ $answer_handlers = array(
 );
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    new Quiz();
+    print_r($questions);
+    foreach ($questions as $q) {
+        $q->render();
+    }
 } else {
     $question_total = 0;
     $question_correct = 0;
