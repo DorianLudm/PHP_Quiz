@@ -41,7 +41,7 @@
                 $q["text"] = $m["text"];
                 $q["answer"] = $m["answer"];
                 $q["score"] = $m["score"];
-                $q["choices"] = [];
+                $q["choices"] = $this->loadChoices($m["id_question"]);
                 $result2=$this->file_db->query('SELECT * from Question_Value WHERE id_question='.$m["id_question"]);
                 foreach ($result2 as $n){
                     $choix = [];
@@ -52,6 +52,15 @@
                 $questions[] = $q;
             }
             return $questions;
-        }   
+        }
+
+        public function loadChoices($id_question){
+            $result=$this->file_db->query('SELECT * from Question_Value WHERE id_question='.$id_question);
+            $choices = [];
+            foreach ($result as $n){
+                $choices[$n["value"]] = $n["text"];
+            }
+            return $choices;
+        }
     }
 ?>

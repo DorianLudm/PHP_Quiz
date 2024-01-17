@@ -7,7 +7,7 @@ final class Checkbox extends Question {
     protected string $type = 'checkbox';
 
     public function render(): String{
-        $html = $this->question . "<br>";
+        $html = $this->label . "<br>";
         $i = 0;
         foreach ($this->listeAnswer as $c) {
             $i += 1;

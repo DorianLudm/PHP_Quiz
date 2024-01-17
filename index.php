@@ -5,7 +5,7 @@ declare(strict_types=1);
 require 'Classes/Autoloader.php';
 Autoloader::register();
 
-// Version JSON
+// Version JSON -> Outdated
 // use Data\Dataloader;
 // $data = new Dataloader("Classes/Data/questions.json");
 

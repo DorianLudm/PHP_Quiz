@@ -3,11 +3,11 @@
     namespace Form;
 
     class GenericQuestionElement implements QuestionRenderInterface{
-        private int $id;
-        private Array $listeAnswer;
-        private Array $realAnswer;
-        private String $label;
-        private String $type;
+        protected int $id;
+        protected Array $listeAnswer;
+        protected Array $realAnswer;
+        protected String $label;
+        protected String $type;
 
         public function __construct(int $id, Array $listeAnswer, Array $realAnswer, String $label, String $type){
             $this->id = $id;

@@ -7,7 +7,7 @@ final class Text extends Question {
     protected string $type = 'radio';
 
     public function render(): String{
-        return $this->question . "<br>";
+        return $this->label . "<br>";
     }
 }
 
