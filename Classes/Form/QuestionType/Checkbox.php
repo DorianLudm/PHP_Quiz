@@ -14,7 +14,7 @@ final class Checkbox extends Question {
             $html .= "<input type='checkbox' name='$this->name' value='$c[value]' id='$this->name-$i'>";
             $html .= "<label for='$this->name-$i'>$c[text]</label>";
         }
-        echo $html;
+        return $html;
     }
 }
 

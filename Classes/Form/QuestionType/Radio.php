@@ -14,7 +14,7 @@ final class Radio extends Question {
             $html .= "<input type='radio' name='$this->name' value='$c[value]' id='$this->name-$i'>";
             $html .= "<label for='$this->name-$i'>$c[text]</label>";
         }
-        echo $html;
+        return $html;
     }
 }
 

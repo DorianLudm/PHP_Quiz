@@ -5,13 +5,16 @@ declare(strict_types=1);
 require 'Classes/Autoloader.php';
 Autoloader::register();
 
-// Use
-use Data\Dataloader;
-use Data\DataBase;
-
-// Init
+// Version JSON
+// use Data\Dataloader;
 // $data = new Dataloader("Classes/Data/questions.json");
+
+
+// Version BD
+use Data\DataBase;
 $data = new DataBase();
+
+//Get instances of questions
 $q = $data->load();
 $questions = Factory::createQuestions($q);
 ?>
