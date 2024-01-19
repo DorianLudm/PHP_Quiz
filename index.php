@@ -1,32 +1,29 @@
 <?php
 declare(strict_types=1);
 
-spl_autoload_register(static function(string $fqcn) {
-    // $fqcn contient Model\Thread\Message par exemple
-    // remplaçons les \ par des / et ajoutons .php à la fin.
-    // on obtient Model/Thread/Message.php
+// Autoload
+require 'Classes/Autoloader.php';
+Autoloader::register();
 
-    $path = str_replace('\\', '/', $fqcn).'.php';
- 
-    // puis chargeons le fichier
-    require_once('./classes/'.$path);
- });
+// Version JSON -> Outdated
+// use Data\Dataloader;
+// $data = new Dataloader("Classes/Data/questions.json");
 
-use Form\InputType\Checkbox;
-use Form\InputType\Radio;
-use Form\InputType\Hidden; 
-use Form\InputType\Text;
-use Form\InputType\Textarea;
-use Action\Quiz;
-require_once('./classes/Action/Question.php');
-require_once('./classes/Action/Score.php');
+
+// Version BD
+use Data\DataBase;
+$data = new DataBase();
+
+//Get instances of questions
+$q = $data->load();
+$questions = Factory::createQuestions($q);
 ?>
 
 <!doctype html>
 <html>
 <head>
 <title>Quiz</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./static/css/index.css">
 </head>
 <body>
 <?php
@@ -81,7 +78,16 @@ $answer_handlers = array(
 );
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    new Quiz();
+    $question_number = 1;
+    echo "<h1> Testez votre culture avec ce quiz! </h1>";
+    echo "<form method='POST'>";
+    foreach ($questions as $q) {
+        echo $question_number.". ".$q->render();
+        echo "<br>";
+        $question_number++;
+    }
+    echo "<input type='submit' value='Submit Answers'>";
+    echo "</form>";
 } else {
     $question_total = 0;
     $question_correct = 0;
