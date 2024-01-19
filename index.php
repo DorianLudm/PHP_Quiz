@@ -23,7 +23,7 @@ $questions = Factory::createQuestions($q);
 <html>
 <head>
 <title>Quiz</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./static/css/index.css">
 </head>
 <body>
 <?php
@@ -78,10 +78,16 @@ $answer_handlers = array(
 );
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $question_number = 1;
+    echo "<h1> Testez votre culture avec ce quiz! </h1>";
+    echo "<form method='POST'>";
     foreach ($questions as $q) {
-        echo $q->render();
+        echo $question_number.". ".$q->render();
         echo "<br>";
+        $question_number++;
     }
+    echo "<input type='submit' value='Submit Answers'>";
+    echo "</form>";
 } else {
     $question_total = 0;
     $question_correct = 0;
