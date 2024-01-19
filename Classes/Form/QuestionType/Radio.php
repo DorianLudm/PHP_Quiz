@@ -7,7 +7,6 @@ final class Radio extends Question {
     protected string $type = 'radio';
 
     public function render(): String{
-        $html .= "<br>";
         $html = $this->label . "<br>";
         $i = 0;
         foreach ($this->listeAnswer as $c) {

@@ -80,6 +80,7 @@ $answer_handlers = array(
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     foreach ($questions as $q) {
         echo $q->render();
+        echo "<br>";
     }
 } else {
     $question_total = 0;

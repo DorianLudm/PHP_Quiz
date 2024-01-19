@@ -7,7 +7,6 @@ final class Checkbox extends Question {
     protected string $type = 'checkbox';
 
     public function render(): String{
-        $html .= "<br>";
         $html = $this->label . "<br>";
         $i = 0;
         foreach ($this->listeAnswer as $c) {
@@ -17,7 +16,6 @@ final class Checkbox extends Question {
                 $html .= "<label for='".$this->label."-$i'>".$c['text']."</label>";
             }
         }
-        $html .= "<br>";
         $html .= "<br>";
         return $html;
     }
