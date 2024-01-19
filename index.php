@@ -78,9 +78,8 @@ $answer_handlers = array(
 );
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    print_r($questions);
     foreach ($questions as $q) {
-        $q->render();
+        echo $q->render();
     }
 } else {
     $question_total = 0;

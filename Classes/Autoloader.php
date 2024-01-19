@@ -12,8 +12,6 @@
          * @param $class string Le nom de la classe à charger
          */
         static function autoload($fqcn){
-            echo $fqcn.PHP_EOL;
-            echo ($fqcn == "Data\\PDO").PHP_EOL;
             if ($fqcn == "Data\\PDO") return;
             $path = str_replace('\\', '/', $fqcn);
             require 'Classes/' . $path . '.php';

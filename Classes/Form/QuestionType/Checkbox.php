@@ -7,13 +7,18 @@ final class Checkbox extends Question {
     protected string $type = 'checkbox';
 
     public function render(): String{
+        $html .= "<br>";
         $html = $this->label . "<br>";
         $i = 0;
         foreach ($this->listeAnswer as $c) {
-            $i += 1;
-            $html .= "<input type='checkbox' name='$this->name' value='$c[value]' id='$this->name-$i'>";
-            $html .= "<label for='$this->name-$i'>$c[text]</label>";
+            if(is_array($c) && isset($c['value']) && isset($c['text'])) {
+                $i += 1;
+                $html .= "<input type='checkbox' name='".$this->label."' value='".$c['value']."' id='".$this->label."-$i'>";
+                $html .= "<label for='".$this->label."-$i'>".$c['text']."</label>";
+            }
         }
+        $html .= "<br>";
+        $html .= "<br>";
         return $html;
     }
 }
