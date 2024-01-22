@@ -12,8 +12,8 @@ final class Radio extends Question {
         foreach ($this->listeAnswer as $c) {
             if(is_array($c) && isset($c['value']) && isset($c['text'])) {
                 $i += 1;
-                $html .= "<input type='radio' name='".$this->label."' value='".$c['value']."' id='".$this->label."-$i'>";
-                $html .= "<label for='".$this->label."-$i'>".$c['text']."</label>";
+                $html .= "<input type='radio' name='".$this->id."' value='".$c['value']."' id='".$this->id."-$i'>";
+                $html .= "<label for='".$this->id."-$i'>".$c['text']."</label>";
             }
         }
         $html .= "<br>";

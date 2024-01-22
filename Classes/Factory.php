@@ -6,7 +6,7 @@
             $listeQuestion = [];
             foreach($data as $question){
                 $className = "Form\\QuestionType\\".ucfirst($question["type"]);
-                array_push($listeQuestion, new $className(intval($question["text"]), $question["choices"], $question["answer"], $question["text"], $question["type"]));
+                array_push($listeQuestion, new $className($question["name"], $question["choices"], $question["answer"], $question["text"], $question["type"], $question["score"]));
             }
             return $listeQuestion;
         }

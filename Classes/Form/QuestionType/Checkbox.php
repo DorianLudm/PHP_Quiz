@@ -12,8 +12,8 @@ final class Checkbox extends Question {
         foreach ($this->listeAnswer as $c) {
             if(is_array($c) && isset($c['value']) && isset($c['text'])) {
                 $i += 1;
-                $html .= "<input type='checkbox' name='".$this->label."' value='".$c['value']."' id='".$this->label."-$i'>";
-                $html .= "<label for='".$this->label."-$i'>".$c['text']."</label>";
+                $html .= "<input type='checkbox' name='".$this->id."[]' value='".$c['value']."' id='".$this->id."-$i'>";
+                $html .= "<label for='".$this->id."'>".$c['text']."</label>";
             }
         }
         $html .= "<br>";

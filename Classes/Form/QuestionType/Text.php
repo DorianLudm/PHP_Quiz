@@ -8,7 +8,7 @@ final class Text extends Question {
 
     public function render(): String{
         $html = $this->label . "<br>";
-        $html .= "<input type='text' name='".$this->label."' id='".$this->label."'><br>";
+        $html .= "<input type='text' name='".$this->id."' id='".$this->id."'><br>";
         return $html;
     }
 }

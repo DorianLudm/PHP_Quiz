@@ -95,21 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $score_correct = 0;
     foreach ($questions as $q) {
         $question_total += 1;
-        echo "<h2>". $q["text"] . "</h2>";
-        $answer_handlers[$q["type"]]($q, $_POST[$q["name"]] ?? NULL);
-        if (is_null($_POST[$q["name"]] ?? NULL) || empty($_POST[$q["name"]] ?? NULL)) {
-            echo "<p>Vous n'avez pas répondu à cette question</p>";
-            continue;
-        }else{
-            if (is_array($_POST[$q["name"]])) {
-                echo " Vous avez choisi <strong>";
-                foreach ($_POST[$q["name"]] as $value) {
-                    echo $value . " ";
-                }
-                echo "</strong> pour réponse</p>";
-            } else {
-                echo " Vous avez choisi <strong>" . $_POST[$q["name"]] . "</strong> pour réponse</p>";
-            }
+        $score_total += $q->getScore();
+        $score = $q->checkAnswer($_POST[$q->getId()]);
+        if ($score > 0){
+            $score_correct+=$score;
+            $question_correct += 1;
         }
     }
     echo "<p>Reponses correctes: <strong>" . $question_correct . "/" . $question_total . "</strong></p>";
