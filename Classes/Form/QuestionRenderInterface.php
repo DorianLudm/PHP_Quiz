@@ -1,10 +1,11 @@
 <?php
-
 declare(strict_types=1);
-namespace Form\InputType;
 
-interface InputRender{
+namespace Form;
+
+interface QuestionRenderInterface
+{
     public function render();
 }
- 
+
 ?>

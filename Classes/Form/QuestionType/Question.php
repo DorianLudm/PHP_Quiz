@@ -1,15 +1,15 @@
 <?php
-
 declare(strict_types=1);
-namespace Form;
-use Form\GenericFormElement;
+namespace Form\QuestionType;
 
-abstract class Input extends GenericFormElement
+use Form\GenericQuestionElement;
+
+abstract class Question extends GenericQuestionElement
 {
     public function render(): string
     {
         return sprintf(
-            '<input type="%s" %s value="%s" name="%s" id="%s"/>', 
+            '<input type="%s" %s value="%s" name="form[%s]" id="%s"/>', 
             $this->type,
             $this->isRequired() ? 'required="required"' : '',
             $this->getValue(),
@@ -18,5 +18,3 @@ abstract class Input extends GenericFormElement
         );
     }
 }
-
-?>
